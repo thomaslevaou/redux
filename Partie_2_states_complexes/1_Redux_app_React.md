@@ -33,3 +33,12 @@ On modifie donc le fichier `index.js` (attention, pas `App.js`).
 Quand on regarde le code de la fonction `playPause` et de `reducer`  dans `store.js`, on constate bien au commit `edf62728f916e0c2470306f8126d7b3cf9321ee2` qu'on appelle le custom hook `useDispatch` pour mettre à jour le state global avec le retour de l'action `playPause`, qui appelle automatiquement le reducer pour mettre à jour ce state global. Cette nouvelle valeur est affichée dans le composant `Display` via l'appel au hook custom `useSelector`, qui pour rappel à pour avantage par rapport à `getState` de re-render le composant à chaque fois le state global se met à jour.
 
 En guise d'exercice, on va généraliser cette utilisation pour arriver au codepen de la partie précédente du cours sur Redux.
+
+Todo:
+
+- Mettre les deux scores dans le state redux
+- Développer le bouton de reset de bouton
+- Développer les composants des boutons des deux jours
+- Vérifier si on peut homogénéiser les deux composants boutons
+
+Done:
