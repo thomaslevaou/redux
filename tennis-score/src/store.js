@@ -7,7 +7,8 @@ const initialState = {
   player2: 0,
   advantage: null,
   winner: null,
-  playing: true
+  playing: true,
+  history: [],
 };
 
 // Les actions creators
@@ -21,7 +22,24 @@ export const pointScored = (player) => ({
 // Le reducer
 function reducer(state, action) {
   if (action.type === "restart") {
-    return initialState;
+    // Attention on doit réinitialiser de cette manière le state
+    // sinon si on le met au moment où le winner est déclaré, un clic sur le bouton de réinitialisation supprimera le début d'historique créé !
+    // Ce qu'Openclassrooms entend par "ajouter un state", c'est "ajouter un élément au state global" ici
+    // Un peu chelou de faire cet exercice dans interface graphique pour ajouter / tester l'historique mais bon ok
+    return produce(state, (draft) => {
+      if (draft.winner) {
+        draft.history.push({
+          player1: draft.player1,
+          player2: draft.player2,
+          winner: draft.winner,
+        });
+      }
+      draft.player1 = 0;
+      draft.player2 = 0;
+      draft.advantage = null;
+      draft.winner = null;
+      draft.playing = true;
+    });
   }
 
   if (action.type === "playPause") {
