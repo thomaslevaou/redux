@@ -28,4 +28,4 @@ On peut aussi modifier le nom de `reducer.js` en `darkModeButton.reducer.js` par
 Dans le projet de ce cours, les actions et reducers associés sont directement dans le fichier du composant.
 Le store et les fonctions pour sélectors seront respectivement dans `store.js` et `selectors.js`.
 
-On va cloner et utiliser le projet Shiny, je ne pourrai donc plus ajouter le code sur lequel je vais travailler dans ce suivi de cours.
+On va cloner et utiliser le projet Shiny, je ne pourrai donc plus ajouter le code sur lequel je vais travailler dans ce suivi de cours. Enfin pour la partie API. Pour la partie React, ça baigne.
