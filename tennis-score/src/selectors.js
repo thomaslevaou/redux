@@ -4,8 +4,7 @@ export const selectPlayerHasAdvantage = (playerId) => {
 
 export const countWonGamesOfPlayer = (playerId) => {
     return (state) => {
-        const gamesWithPlayerIdAsWinner = state.history.filter((game) => game.winner === playerId);
-        return gamesWithPlayerIdAsWinner.length;
+        return state.history.filter((game) => game.winner === playerId).length;
     };
 }
 
