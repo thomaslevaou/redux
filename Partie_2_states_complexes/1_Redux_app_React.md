@@ -6,7 +6,7 @@ On va faire tourner Redux avec React en utilisant la bibliothèque **React-Redux
 
 J'initie le projet "from scratch" (pas celui du cours) dans notre repo git.
 
-Commandes utilisées :
+Commande utilisée :
 
 ```bash
 npx create-react-app tennis-score
@@ -32,4 +32,4 @@ On modifie donc le fichier `index.js` (attention, pas `App.js`).
 
 Quand on regarde le code de la fonction `playPause` et de `reducer`  dans `store.js`, on constate bien au commit `edf62728f916e0c2470306f8126d7b3cf9321ee2` qu'on appelle le custom hook `useDispatch` pour mettre à jour le state global avec le retour de l'action `playPause`, qui appelle automatiquement le reducer pour mettre à jour ce state global. Cette nouvelle valeur est affichée dans le composant `Display` via l'appel au hook custom `useSelector`, qui pour rappel à pour avantage par rapport à `getState` de re-render le composant à chaque fois le state global se met à jour.
 
-
+En guise d'exercice, on va généraliser cette utilisation pour arriver au codepen de la partie précédente du cours sur Redux.

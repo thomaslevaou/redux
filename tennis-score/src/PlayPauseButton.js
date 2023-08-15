@@ -9,6 +9,7 @@ export function PlayPauseButton() {
       onClick={() => {
         dispatch(playPause())
       }}
+      class="button"
     >
       Pause / Reprendre
     </button>
