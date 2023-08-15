@@ -1,5 +1,5 @@
 import { PlayPauseButton } from "./PlayPauseButton";
-import { PlayerButton } from "./PlayerButton";
+import { PointScoredButton } from "./PointScoredButton";
 import { RestartButton } from "./RestartButton";
 import { Display } from "./Display";
 
@@ -9,8 +9,8 @@ function App() {
       <Display />
       <div class="buttons">
        <div class="buttons-row">
-          <PlayerButton player={"player1"} />
-          <PlayerButton player={"player2"} />
+          <PointScoredButton player={"player1"} />
+          <PointScoredButton player={"player2"} />
         </div>
        <div class="buttons-row">
           <RestartButton />
