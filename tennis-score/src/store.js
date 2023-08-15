@@ -7,12 +7,16 @@ const initialState = {
   player2: 0,
   advantage: null,
   winner: null,
-  playing: true,
+  playing: false,
   history: [],
 };
 
 // Les actions creators
-export const playPause = () => ({ type: "playPause" });
+export const setPlaying = (playing) => ({
+  type: "setPlaying",
+  payload: playing
+})
+
 export const restartGame = () => ({ type: "restart" });
 export const pointScored = (player) => ({
   type: "pointScored",
@@ -42,13 +46,13 @@ function reducer(state, action) {
     });
   }
 
-  if (action.type === "playPause") {
+  if (action.type === "setPlaying") {
     if (state.winner) {
       return state;
     }
 
     return produce(state, draft => {
-      draft.playing = !draft.playing;
+      draft.playing = action.payload;
     })
   }
 
