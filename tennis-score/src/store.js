@@ -30,17 +30,25 @@ export const autoplay = (store) => {
   }
   store.dispatch(setPlaying(true));
 
-  window.setTimeout(() => {
-      // Le if ci-dessous sert à vérifier qu'on n'a pas remis playing à sa valeur initiale (false) pendant les 2 secondes (ce qui peut arriver avec un bouton de remise à zéro par ex)
-      if (store.getState().playing === false || store.getState().winner !== null) {
-          store.dispatch(setPlaying(false)); // reset en cas de fin de partie
-          return;
+  playNextPoint();
+  function playNextPoint() {
+    if (store.getState().playing === false) {
+      return;
+    }
+    window.setTimeout(() => {
+      if (store.getState().playing === false) {
+        return;
       }
       const pointWinner = Math.random() > 0.5 ? "player1" : "player2";
       store.dispatch(pointScored(pointWinner));
-      store.dispatch(setPlaying(false));
-      autoplay(store);
-  }, 2000);
+      // Oui, on peut récupérer le state global directement ici comme ça après le dispatch
+      if (store.getState().winner) {
+        store.dispatch(setPlaying(false));
+        return;
+      }
+      playNextPoint();
+    }, 2000);
+  }
 }
 
 // Le reducer
