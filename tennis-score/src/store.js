@@ -56,7 +56,8 @@ function reducer(state, action) {
     }
 
     if (currentPlayerScore === 40) {
-      // si APRES avoir cliqué sur le bouton joueur en ayant un score de 40, le joueur 2 a moins de 40 ou qu'il a 40 et que j'ai l'avantage, je gagne
+      // si APRES avoir cliqué sur le bouton du jouer courant en ayant un score de 40, si l'autre joueur a moins de 40, ou qu'il a 40 et que j'ai l'avantage, je gagne
+      // On rappelle que le score n'augmente plus après 40 au tennis.
       if (state[otherPlayer] < 40 || state.advantage === player) {
         return produce(state, draft => {
           draft.winner = player;
