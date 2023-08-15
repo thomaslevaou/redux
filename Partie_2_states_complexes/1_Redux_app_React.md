@@ -23,6 +23,8 @@ Comme l'indique mon VS code, je vais essayer d'utiliser `configureStore` à la p
 On va utiliser des custom hooks de React-Redux pour utiliser Redux dans notre projet React.
 
 Notamment `useDispatch` pour pouvoir utiliser la fonction `dispatch` du store Redux (qui est pour rappel l'équivalent de `setState`, mais pour mettre à jour le state global). Et pour utiliser le state Redux dans nos composants, on va utiliser `useSelector`. Même si la fonction `getState` existe, on préférera utiliser `useSelector` dans nos composants React fonction ici, car `useSelector` met le composant à jour lorsque le state change (et non, `getState` n'a pas l'air de faire ça).
+Le hook `useDispatch` ne prend aucun paramètre.
+Le hook `useSelector` prend toujours une fonction en paramètre. Cette fonction de selector est executée non seulement quand le state global change, mais aussi quand le composant est mis à jour (même si le retour n'est pas dans le state...), car les paramètres de la fonction selector peuvent avoir changé et Redux doit le vérifier.
 
 On n'a donc plus besoin d'utilier `store.subscribe()`, le hook `useSelector` s'en occupe.
 
@@ -34,11 +36,4 @@ Quand on regarde le code de la fonction `playPause` et de `reducer`  dans `store
 
 En guise d'exercice, on va généraliser cette utilisation pour arriver au codepen de la partie précédente du cours sur Redux.
 
-Todo:
-
-- Mettre les deux scores dans le state redux
-- Développer le bouton de reset de bouton
-- Développer les composants des boutons des deux jours
-- Vérifier si on peut homogénéiser les deux composants boutons
-
-Done:
+Attention on rappelle que les hooks ne peuvent jamais être utilisés dans une condition...
