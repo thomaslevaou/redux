@@ -7,7 +7,7 @@ export function PlayPauseButton() {
   return (
     <button
       onClick={() => { autoplay(store) }}
-      class="button"
+      className="button"
     >
       Pause / Reprendre
     </button>

@@ -32,12 +32,14 @@ export const autoplay = (store) => {
 
   window.setTimeout(() => {
       // Le if ci-dessous sert à vérifier qu'on n'a pas remis playing à sa valeur initiale (false) pendant les 2 secondes (ce qui peut arriver avec un bouton de remise à zéro par ex)
-      if (store.getState().playing === false) {
+      if (store.getState().playing === false || store.getState().winner !== null) {
+          store.dispatch(setPlaying(false)); // reset en cas de fin de partie
           return;
       }
       const pointWinner = Math.random() > 0.5 ? "player1" : "player2";
       store.dispatch(pointScored(pointWinner));
       store.dispatch(setPlaying(false));
+      autoplay(store);
   }, 2000);
 }
 

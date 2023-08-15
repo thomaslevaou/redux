@@ -9,7 +9,7 @@ export function RestartButton({player}) {
       onClick={() => {
         dispatch(restartGame())
       }}
-      class="button"
+      className="button"
     >
       Remettre à zéro
     </button>

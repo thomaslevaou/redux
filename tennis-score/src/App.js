@@ -13,12 +13,12 @@ function App() {
       <Display />
       <PlayerScore playerId={"player1"} playerName={"Player 1"}/>
       <PlayerScore playerId={"player2"} playerName={"Player 2"}/>
-      <div class="buttons">
-       <div class="buttons-row">
+      <div className="buttons">
+       <div className="buttons-row">
           <PointScoredButton player={"player1"} />
           <PointScoredButton player={"player2"} />
         </div>
-       <div class="buttons-row">
+       <div className="buttons-row">
           <RestartButton />
           <PlayPauseButton />
         </div>

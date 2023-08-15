@@ -10,7 +10,7 @@ export function PointScoredButton({player}) {
       onClick={() => {
         dispatch(pointScored(player))
       }}
-      class="button"
+      className="button"
     >
       Point joueur {playerNumber} {/* Je sais que je pourrais utiliser children comme dans la correction, mais je ne trouve pas ça pertinent ici */}
     </button>
