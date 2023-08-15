@@ -1,19 +1,16 @@
-import { useSelector, useStore } from "react-redux";
-import { autoplay } from "./store";
-import { selectGameIsPlaying } from "./selectors";
+import { useDispatch } from "react-redux";
+import { playPause } from "./store";
 
 export function PlayPauseButton() {
-  const store = useStore();
-  const playing = useSelector(selectGameIsPlaying);
+  const dispatch = useDispatch();
 
   return (
     <button
-      className="button"
       onClick={() => {
-        autoplay(store);
+        dispatch(playPause())
       }}
     >
-      {playing ? "Jeu en cours..." : "Jouer"}
+      Pause / Reprendre
     </button>
   );
 }

@@ -53,14 +53,14 @@ const initialState = {
   // Les actions creators
 
   // mettre en pause / reprendre le jeu
-  const playPause = () => ({ type: "playPause" });
+  export const playPause = () => ({ type: "playPause" });
 
   // redémarrer le jeu
-  const restartGame = () => ({ type: "restart" });
+  export const restartGame = () => ({ type: "restart" });
 
   // un joueur a marqué un point
   // on passe en paramètre le joueur qui a marqué
-  const pointScored = (player) => ({
+  export const pointScored = (player) => ({
     type: "pointScored",
     payload: { player: player }
   });

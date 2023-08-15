@@ -1,9 +1,8 @@
 // on import useSelector depuis react-redux
 import { useSelector } from "react-redux";
-import { selectDisplayText } from "./selectors";
 
 export function Display() {
-  const displayText = useSelector(selectDisplayText);
+  const gameIsPlaying = useSelector((state) => state.playing);
 
-  return <p className="display">{displayText}</p>;
+  return <p>{ gameIsPlaying ? "Jeu en cours": "C'est la pause"}</p>;
 }
