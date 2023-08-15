@@ -8,9 +8,9 @@ export function PlayerScore ({ playerId, playerName }) {
 
     return (
         <div className="player-score">
-            <p>{playerName}</p>
+            <p>{playerName} {hitsLeftUntilVictory !== 0 && `(encore ${hitsLeftUntilVictory} point(s))`}</p>
             <p>{(hasAdvantage ? "Avantage - " : "") + score}</p>
-            {hitsLeftUntilVictory !== 0 && (<p>À {hitsLeftUntilVictory} échange(s) de la victoire</p>)}
+
         </div>
     );
 }
