@@ -12,7 +12,7 @@ export const selectDisplayText = (state) => {
     if (state.winner) {
         let gameWinnerLabel = state.winner === "player1" ? '1': '2';
         return "Joueur " + gameWinnerLabel + " gagne";
-      } else if (state.playing) {
+      } else {
         let scoreLabel = "Le score est " + state.player1 + " - " + state.player2;
         if (state.advantage) {
           if (state.advantage === "player1") {
@@ -22,8 +22,6 @@ export const selectDisplayText = (state) => {
           }
         }
         return scoreLabel;
-      } else {
-        return "C'est la pause";
       }
 }
 
