@@ -9,6 +9,25 @@ export const countWonGamesOfPlayer = (playerId) => {
     };
 }
 
+export const selectDisplayText = (state) => {
+    if (state.winner) {
+        let gameWinnerLabel = state.winner === "player1" ? '1': '2';
+        return "Joueur " + gameWinnerLabel + " gagne";
+      } else if (state.playing) {
+        let scoreLabel = "Le score est " + state.player1 + " - " + state.player2;
+        if (state.advantage) {
+          if (state.advantage === "player1") {
+            scoreLabel += " avantage joueur 1";
+          } else {
+            scoreLabel += " avantage joueur 2";
+          }
+        }
+        return scoreLabel;
+      } else {
+        return "C'est la pause";
+      }
+}
+
 export const countHitsLeftUntilVictory = (playerId) => {
     return (state) => {
         if (state.winner) {
