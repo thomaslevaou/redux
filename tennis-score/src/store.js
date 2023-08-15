@@ -1,4 +1,39 @@
-import { configureStore } from 'redux';
+import { createStore } from 'redux';
+
+const setPlaying = (playing) => ({
+    type: "setPlaying",
+    payload: playing,
+});
+
+export function autoplay(store) {
+    const isPlaying = store.getState().playing;
+    if (isPlaying || store.getState().winner) {
+      // Déjà entrain de jouer, on ne fait rien
+      return;
+    }
+    // on indique que la partie est en cours
+    store.dispatch(setPlaying(true));
+    playNextPoint();
+    function playNextPoint() {
+      if (store.getState().playing === false) {
+        return;
+      }
+      const time = 1000 + Math.floor(Math.random() * 2000);
+      window.setTimeout(() => {
+        if (store.getState().playing === false) {
+          return;
+        }
+        // si oui on marque un point aléatoire
+        const pointWinner = Math.random() > 0.5 ? "player1" : "player2";
+        store.dispatch(pointScored(pointWinner));
+        if (store.getState().winner) {
+          store.dispatch(setPlaying(false));
+          return;
+        }
+        playNextPoint();
+      }, time);
+    }
+  }
 
 // Le state
 const initialState = {
@@ -97,4 +132,4 @@ const initialState = {
   }
 
   // on crée le store
-  const store = configureStore(reducer, initialState);
+export const store = createStore(reducer, initialState);

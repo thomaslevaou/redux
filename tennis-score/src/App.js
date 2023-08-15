@@ -1,7 +1,11 @@
+import { PlayPauseButton } from "./PlayPauseButton";
+import { Display } from "./Display";
+
 function App() {
   return (
     <div>
-      Hello OpenClassrooms !
+      <Display />
+      <PlayPauseButton />
     </div>
   );
 }
