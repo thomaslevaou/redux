@@ -45,23 +45,35 @@ function reducer(state, action) {
     }
     const currentPlayerScore = state[player];
     if (currentPlayerScore <= 15) {
-      return { ...state, [player]: currentPlayerScore + 15 };
+      return produce(state, draft => {
+        draft[player] = currentPlayerScore + 15;
+      })
     }
     if (currentPlayerScore === 30) {
-      return { ...state, [player]: 40 };
+      return produce(state, draft => {
+        draft[player] = 40;
+      })
     }
 
     if (currentPlayerScore === 40) {
-      if (state[otherPlayer] !== 40) {
-        return { ...state, winner: player };
+      // si APRES avoir cliqué sur le bouton joueur en ayant un score de 40, le joueur 2 a moins de 40 ou qu'il a 40 et que j'ai l'avantage, je gagne
+      if (state[otherPlayer] < 40 || state.advantage === player) {
+        return produce(state, draft => {
+          draft.winner = player;
+        })
       }
-      if (state.advantage === player) {
-        return { ...state, winner: player };
-      }
+      // cas où le joueur actuel a 40, a cliqué sur le bouton mais l'adversaire a 40 aussi et l'avantage n'est pas défini
+      // dans ce cas, le joueur courant a l'avantage. S'il n'a pas perdu l'avantage au prochain tour, il gagne au vu de la condition ci-dessus.
       if (state.advantage === null) {
-        return { ...state, advantage: player };
+        return produce(state, draft => {
+          draft.advantage = player;
+        })
       }
-      return { ...state, advantage: null };
+      // cas où le joueur actuel a 40, a cliqué sur le bouton mais c'est l'adversaire qui a l'avantage
+      // On réinitialise alors l'avantage. Si l'adversaire ne le chope pas au prochain tour, lui peut le choper au tour suivant. S'il arrive à la conserver à son tour suivant ensuite, il gagne la partie.
+      return produce(state, draft => {
+        draft.advantage = null;
+      })
     }
   }
   return state;
