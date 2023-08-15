@@ -29,3 +29,5 @@ Dans le projet de ce cours, les actions et reducers associés sont directement d
 Le store et les fonctions pour sélectors seront respectivement dans `store.js` et `selectors.js`.
 
 On va cloner et utiliser le projet Shiny, je ne pourrai donc plus ajouter le code sur lequel je vais travailler dans ce suivi de cours. Enfin pour la partie API. Pour la partie React, ça baigne.
+
+On remplace l'utilisation de `useContext` pour le theme (pour rappel, permet de faire descendre une prop globale sans avoir à passer par tous les composants enfants - utile pour pouvoir utiliser de petites props sans passer par Redux, mais impose quand même d'avoir la fonction d'update tout en haut de la hiérarchie), par une implémentation de Redux.
