@@ -1,4 +1,3 @@
-// on import useSelector depuis react-redux
 import { useSelector } from "react-redux";
 
 export function Display() {
