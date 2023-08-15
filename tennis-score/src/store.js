@@ -62,7 +62,7 @@ function reducer(state, action) {
       draft.player2 = 0;
       draft.advantage = null;
       draft.winner = null;
-      draft.playing = true;
+      draft.playing = false;
     });
   }
 
