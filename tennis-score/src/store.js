@@ -24,7 +24,7 @@ export const pointScored = (player) => ({
 export const autoplay = (store) => {
   // On rappelle que dans ce code de test, `playing` vaut false à l'initialisation
   const isPlaying = store.getState().playing;
-  // Le if ci-dessous est donc là pour bloquer ceux qui voudraient re-cliquer sur le bouton alors que le timeOut n'est pas passé
+  // Le if ci-dessous est donc là pour bloquer ceux qui voudraient re-cliquer sur le bouton après qu'il ait été mis à true à la ligne suivante, mais alors que le timeOut de 2 sec n'est pas passé
   if (isPlaying) {
     return;
   }
