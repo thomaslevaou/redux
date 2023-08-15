@@ -29,3 +29,7 @@ On n'a donc plus besoin d'utilier `store.subscribe()`, le hook `useSelector` s'e
 Comme en Redux à classe, l'application globale doit être enveloppée (wrappée) par un Provider global contenant le store en prop pour fonctionner.
 
 On modifie donc le fichier `index.js` (attention, pas `App.js`).
+
+Quand on regarde le code de la fonction `playPause` et de `reducer`  dans `store.js`, on constate bien au commit `edf62728f916e0c2470306f8126d7b3cf9321ee2` qu'on appelle le custom hook `useDispatch` pour mettre à jour le state global avec le retour de l'action `playPause`, qui appelle automatiquement le reducer pour mettre à jour ce state global. Cette nouvelle valeur est affichée dans le composant `Display` via l'appel au hook custom `useSelector`, qui pour rappel à pour avantage par rapport à `getState` de re-render le composant à chaque fois le state global se met à jour.
+
+
