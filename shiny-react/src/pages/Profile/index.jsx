@@ -95,7 +95,7 @@ function Profile() {
 
   const freelances = useSelector(selectFreelances)
   console.log(freelances)
-  const profile = freelances.data?.freelanceData
+  const profile = freelances.data?.freelancersList[parseInt(queryId) - 1]
   const store = useStore()
 
   useEffect(() => {

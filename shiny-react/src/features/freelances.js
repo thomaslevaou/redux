@@ -109,14 +109,12 @@ export default function freelancesReducer(state = initialState, action) {
         return
       }
       case RESOLVED_PROFILE: {
-        console.log('draft satus')
-        console.log(draft.status)
         if (draft.status === 'pending' || draft.status === 'updating') {
-          // console.log('resolved profile beginning...')
-          // console.log(action.payload.freelanceData)
-          // // draft.data.freelancesList[parseInt(action.payload.freelanceData.id)] =
-          // // action.payload.freelanceData
-          draft.data = action.payload
+          // Ne pas aller directement sur une page de freelance, ni utiliser ça en prod. Mais pour du debug local j'ai trouvé ça fun
+          draft.data.freelancersList[
+            parseInt(action.payload.freelanceData.id) - 1
+          ] = action.payload.freelanceData
+
           draft.status = 'resolved'
           return
         }
