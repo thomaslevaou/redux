@@ -26,8 +26,6 @@ export async function fetchOrUpdateProfile(store, profileId) {
       'http://localhost:8000/freelance?id=' + profileId
     )
     const data = await response.json()
-    console.log('freelance id')
-    console.log(data)
     store.dispatch(profileResolved(data))
   } catch (error) {
     store.dispatch(profileRejected(error))

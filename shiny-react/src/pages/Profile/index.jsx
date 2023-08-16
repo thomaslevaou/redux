@@ -97,7 +97,6 @@ function Profile() {
   const store = useStore()
 
   useEffect(() => {
-    console.log('calling profile api call ?')
     fetchOrUpdateProfile(store, queryId)
   }, [store, queryId])
 
