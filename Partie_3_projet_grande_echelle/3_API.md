@@ -3,3 +3,5 @@
 On va déplacer les traitements gérant les listes de freelances de l'application Shiny dans des traitements Redux.
 
 La différence avec la logique du changement de thème, c'est que cette fois on va utiliser un code faisant appel à des API dans une logique Redux.
+
+Une fois mis en place, la partie du state sur les `freelances` est visible dans le Redux-devtools.
