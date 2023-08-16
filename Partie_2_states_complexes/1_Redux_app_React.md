@@ -22,7 +22,7 @@ Comme l'indique mon VS code, je vais essayer d'utiliser `configureStore` à la p
 
 On va utiliser des custom hooks de React-Redux pour utiliser Redux dans notre projet React.
 
-Notamment `useDispatch` pour pouvoir utiliser la fonction `dispatch` du store Redux (qui est pour rappel l'équivalent de `setState`, mais pour mettre à jour le state global). Et pour utiliser le state Redux dans nos composants, on va utiliser `useSelector`. Même si la fonction `getState` existe, on préférera utiliser `useSelector` dans nos composants React fonction ici, car `useSelector` met le composant à jour lorsque le state change (et non, `getState` n'a pas l'air de faire ça).
+Notamment `useDispatch` pour pouvoir utiliser la fonction `dispatch` du store Redux (qui est pour rappel l'équivalent de `setState`, mais pour mettre à jour le state global, et je pense que ça évite de passer par des props comme j'ai fait dans LaBO / c'est la manière la plus propre d'appeler dispatch en redux aujourd'hui, avec le moins de code parasite possible). Et pour utiliser le state Redux dans nos composants, on va utiliser `useSelector`. Même si la fonction `getState` existe, on préférera utiliser `useSelector` dans nos composants React fonction ici, car `useSelector` met le composant à jour lorsque le state change (et non, `getState` n'a pas l'air de faire ça).
 Le hook `useDispatch` ne prend aucun paramètre.
 Le hook `useSelector` prend toujours une fonction en paramètre. Cette fonction de selector est executée non seulement quand le state global change, mais aussi quand le composant est mis à jour (même si le retour n'est pas dans le state...), car les paramètres de la fonction selector peuvent avoir changé et Redux doit le vérifier.
 
