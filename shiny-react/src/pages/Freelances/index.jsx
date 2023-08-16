@@ -4,8 +4,10 @@ import Card from '../../components/Card'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { useFetch } from '../../utils/hooks'
-import { useSelector } from 'react-redux'
+import { useSelector, useStore } from 'react-redux'
 import { selectTheme } from '../../utils/selectors'
+import { useEffect } from 'react'
+import { fetchOrUpdateFreelances } from '../../features/freelances'
 
 const CardsContainer = styled.div`
   display: grid;
@@ -44,6 +46,12 @@ function Freelances() {
   )
 
   const freelancersList = data?.freelancersList
+
+  const store = useStore()
+
+  useEffect(() => {
+    fetchOrUpdateFreelances(store)
+  }, [store])
 
   if (error) {
     return <span>Il y a un problème</span>
