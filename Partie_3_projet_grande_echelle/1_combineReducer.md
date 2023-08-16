@@ -7,7 +7,7 @@ Dans le contexte de l'application Shiny, on va faire appel à un `usersReducer` 
 Utiliser une sous-partie du state, si la sous-partie est un type primitif (genre un booléen), alors ça veut dire que le sous-reducer associé sera aussi un type primitif (comme un booléen dans l'exemple d'openclassrooms). Deux sous-reducers peuvent quand même écouter la même action, si une action peut s'appliquer à deux sous-reducers différents concernés. On dit que les actions restent _globales_.
 
 On peut alors créer un objet reducer, dans lequel on va combiner les deux sous-reducers dans un objet.
-Enfin techniquement, ça pourrait marcher comme ça. Mais le problème, c'est que comme cette manière de faire créer un nouvel objet à chaque appel du reducer (même si rien n'a changé). Et c'est pour pallier à ce problème qu'on fait appel à la fonction `combineReducers`.
+Enfin techniquement, ça pourrait marcher comme ça. Mais le problème, c'est que comme cette manière de faire créer un nouvel objet à chaque appel du reducer (même si rien n'a changé). Et c'est pour pallier à ce problème qu'on fait appel à la fonction `combineReducers`. Attention, si on utilise cette fonction, alors le state utilisé ne pourra être qu'un objet.
 
 Une bonne pratique quand on utilise plusieurs reducers est de préfixer les actions, par exemple ici avec `darkMode/toggle` pour une action de toggle qui ne concerne que le reducer du darkmode.
 

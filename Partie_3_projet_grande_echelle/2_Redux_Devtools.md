@@ -13,3 +13,5 @@ On a aussi un petit interpréteur en bas pour envoyer une action manuellement ge
   type: 'theme/toggle'
 }
 ```
+
+Avant il y avait un bouton "PAUSE" pour arrêter l'extension tout en faisant continuer l'application (cheh au quiz), mais qui n'empêchait pas l'application de tourner.
