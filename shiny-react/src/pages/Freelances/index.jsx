@@ -5,7 +5,7 @@ import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { useFetch } from '../../utils/hooks'
 import { useSelector, useStore } from 'react-redux'
-import { selectTheme } from '../../utils/selectors'
+import { selectFreelances, selectTheme } from '../../utils/selectors'
 import { useEffect } from 'react'
 import { fetchOrUpdateFreelances } from '../../features/freelances'
 
@@ -41,11 +41,9 @@ const LoaderWrapper = styled.div`
 
 function Freelances() {
   const theme = useSelector(selectTheme)
-  const { data, isLoading, error } = useFetch(
-    `http://localhost:8000/freelances`
-  )
+  const freelances = useSelector(selectFreelances)
 
-  const freelancersList = data?.freelancersList
+  const freelancersList = freelances.data?.freelancersList
 
   const store = useStore()
 
@@ -53,9 +51,12 @@ function Freelances() {
     fetchOrUpdateFreelances(store)
   }, [store])
 
-  if (error) {
+  if (freelances.status === 'rejected') {
     return <span>Il y a un problème</span>
   }
+
+  const isLoading =
+    freelances.status === 'void ' || freelances.status === 'pending'
 
   return (
     <div>
