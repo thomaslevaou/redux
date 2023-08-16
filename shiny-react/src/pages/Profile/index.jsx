@@ -100,7 +100,6 @@ function Profile() {
     fetchOrUpdateProfile(store, queryId)
   }, [store, queryId])
 
-  console.log(profile)
   const profileData = profile.data?.freelanceData
 
   const { picture, name, location, tjm, job, skills, available, id } =
