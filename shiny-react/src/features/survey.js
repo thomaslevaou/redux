@@ -22,7 +22,7 @@ export async function fetchOrUpdateSurvey(store) {
   }
   store.dispatch(surveyFetching())
   try {
-    const response = await fetch('http://localhost:8000/freelances')
+    const response = await fetch('http://localhost:8000/survey')
     const data = await response.json()
     store.dispatch(surveyResolved(data))
   } catch (error) {
