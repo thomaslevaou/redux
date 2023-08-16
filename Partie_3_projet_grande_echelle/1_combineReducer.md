@@ -31,3 +31,7 @@ Le store et les fonctions pour sélectors seront respectivement dans `store.js` 
 On va cloner et utiliser le projet Shiny, je ne pourrai donc plus ajouter le code sur lequel je vais travailler dans ce suivi de cours. Enfin pour la partie API. Pour la partie React, ça baigne.
 
 On remplace l'utilisation de `useContext` pour le theme (pour rappel, permet de faire descendre une prop globale sans avoir à passer par tous les composants enfants - utile pour pouvoir utiliser de petites props sans passer par Redux, mais impose quand même d'avoir la fonction d'update tout en haut de la hiérarchie), par une implémentation de Redux.
+
+Notons que dans notre `createStore` du jeu de tennis, le deuxième paramètre de `createStore` est notre state initial. Mais quand on utilise `combineReducers`, on n'en a pas besoin car chaque reducer a son propre état initial. `createStore` peut donc être appelé juste avec les reducers en paramètre, et très bien fonctionner.
+
+Dans notre `themeReducer`, c'est le `state = 'light'`  en paramètre par défaut de `reducer` qui fait office de state par défaut.
