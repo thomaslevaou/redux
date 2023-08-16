@@ -15,3 +15,5 @@ Notons qu'avec un chargement via Redux comme on a fait pour la liste de freelanc
 Attention à normaliser les données quand un front utilise une API, mais ça je le sais déjà.
 
 On recommande de lancer une requête à chaque fois qu'on doit voir une donnée en lecture (ne pas modifier le sate manuellement), et d'utiliser un status pour suivre le résultat de la requête (ce qui permet de gérer le loader comme on a vu ici).
+
+Le fait de mettre les status dans le state permet de ne pas avoir à gérer des booléens à déplacer entre les appels API et le composant, genre pour savoir si l'appel est en cours ou s'il y a eu une erreur par exemple. C'est juste une bonne pratique pour bien gérer les données. Sachant qu'on met les data quand il y a une data, et que c'est géré grâce aux actions. À retester pendant l'exercice (et voir dans quelle mesure appliquer ça dans LaBO ensuite ?).
