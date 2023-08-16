@@ -2,7 +2,6 @@ import { combineReducers, createStore } from 'redux'
 import themeReducer from '../features/theme'
 import freelancesReducer from '../features/freelances'
 import surveyReducer from '../features/survey'
-import profileReducer from '../features/profile'
 
 // on utilise combineReducer pour faire
 // fonctionner plusieurs reducers ensemble
@@ -11,7 +10,6 @@ const reducer = combineReducers({
   theme: themeReducer,
   freelances: freelancesReducer,
   survey: surveyReducer,
-  profile: profileReducer,
 })
 
 const reduxDevtools =
