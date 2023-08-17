@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import colors from '../../utils/style/colors'
 import { useSelector, useStore } from 'react-redux'
-import { selectTheme, selectFreelances } from '../../utils/selectors'
-import { fetchOrUpdateProfile } from '../../features/freelances'
+import { selectTheme, selectFreelance } from '../../utils/selectors'
+import { fetchOrUpdateFreelance } from '../../features/freelance'
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -93,17 +93,14 @@ function Profile() {
   const theme = useSelector(selectTheme)
   const { id: queryId } = useParams()
 
-  const freelances = useSelector(selectFreelances)
-  console.log(freelances)
-  const profile = freelances.data?.freelancersList[parseInt(queryId) - 1]
   const store = useStore()
-
   useEffect(() => {
-    fetchOrUpdateProfile(store, queryId)
+    fetchOrUpdateFreelance(store, queryId)
   }, [store, queryId])
+  const freelance = useSelector(selectFreelance(queryId))
+  const profile = freelance.data?.freelanceData ?? {}
 
-  const { picture, name, location, tjm, job, skills, available, id } =
-    profile ?? {}
+  const { picture, name, location, tjm, job, skills, available, id } = profile
 
   return (
     <ProfileWrapper theme={theme}>
