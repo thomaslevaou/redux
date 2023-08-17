@@ -19,3 +19,5 @@ On recommande de lancer une requête à chaque fois qu'on doit voir une donnée 
 Le fait de mettre les status dans le state permet de ne pas avoir à gérer des booléens à déplacer entre les appels API et le composant, genre pour savoir si l'appel est en cours ou s'il y a eu une erreur par exemple. C'est juste une bonne pratique pour bien gérer les données. Sachant qu'on met les data quand il y a une data, et que c'est géré grâce aux actions. À retester pendant l'exercice (et voir dans quelle mesure appliquer ça dans LaBO ensuite ?).
 
 Le code que j'ai mis pour gérer les détails d'un freelance relève plus de la blague. Le code de la correction fait foi !
+
+En vrai pour éviter des temps de chargement où il y a des data partielles au lieu de rien, on pourrait mixer les solution du tableau général et le state tel que donné dans la correction. Mais la flemme pour juste un exo.
