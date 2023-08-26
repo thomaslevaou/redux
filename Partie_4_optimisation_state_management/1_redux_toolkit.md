@@ -4,7 +4,7 @@ Le **Redux-toolkit** est un projet permettant de réduire les quantités de code
 
 On l'installe avec `yarn add @reduxjs/toolkit`.
 
-Dans le cadre de ce cours, on va surtout l'utiliser pour simplifier des créations de store avec `configureStore`, `createAction` pour les actions, ainsi que `createReducer` pour les reduces (et notre utilisation d'Immer).
+Dans le cadre de ce cours, on va surtout l'utiliser pour simplifier des créations de store avec `configureStore`, `createAction` pour les actions, ainsi que `createReducer` pour les reducers (et notre utilisation d'Immer).
 
 ## configureStore
 
@@ -44,3 +44,5 @@ const freelanceResolved = createAction(
 Mais attention parce que dans ce cas, la valeur à droite de `payload` devra obligatoirement être un objet !
 
 Au lieu de passer par des constants pour identifier nos actions, on prendra la fonction, et on lui appliquera un `toString()`.
+
+## createReducer

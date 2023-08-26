@@ -83,7 +83,7 @@ export default function freelanceReducer(state = initialState, action) {
         }
         return
       }
-      case RESOLVED: {
+      case freelanceResolved.toString(): {
         if (
           draft[payload.freelanceId].status === 'pending' ||
           draft[payload.freelanceId].status === 'updating'
