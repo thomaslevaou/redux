@@ -1,5 +1,6 @@
 import { produce } from 'immer'
 import { selectFreelances } from '../utils/selectors'
+import { createAction, createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
   status: 'void',
@@ -7,13 +8,9 @@ const initialState = {
   error: null,
 }
 
-const FETCHING = 'survey/fetching'
-const RESOLVED = 'survey/resolved'
-const REJECTED = 'survey/rejected'
-
-const surveyFetching = () => ({ type: FETCHING })
-const surveyResolved = (data) => ({ type: RESOLVED, payload: data })
-const surveyRejected = (error) => ({ type: REJECTED, payload: error })
+const surveyFetching = createAction('survey/fetching')
+const surveyResolved = createAction('survey/resolved')
+const surveyRejected = createAction('survey/rejected')
 
 export async function fetchOrUpdateSurvey(store) {
   const status = selectFreelances(store.getState()).status
@@ -34,7 +31,7 @@ export default function surveyReducer(state = initialState, action) {
   // Y a pas moyen de rendre ça générique avec freelancesReducer ?
   return produce(state, (draft) => {
     switch (action.type) {
-      case FETCHING: {
+      case surveyFetching.toString(): {
         if (draft.status === 'void') {
           draft.status = 'pending'
           return
@@ -50,7 +47,7 @@ export default function surveyReducer(state = initialState, action) {
         }
         return
       }
-      case RESOLVED: {
+      case surveyResolved.toString(): {
         if (draft.status === 'pending' || draft.status === 'updating') {
           draft.data = action.payload
           draft.status = 'resolved'
@@ -58,7 +55,7 @@ export default function surveyReducer(state = initialState, action) {
         }
         return
       }
-      case REJECTED: {
+      case surveyRejected.toString(): {
         if (draft.status === 'pending' || draft.status === 'updating') {
           draft.error = action.payload
           draft.data = null
