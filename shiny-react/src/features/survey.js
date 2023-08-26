@@ -1,4 +1,3 @@
-import { produce } from 'immer'
 import { selectFreelances } from '../utils/selectors'
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
@@ -27,45 +26,39 @@ export async function fetchOrUpdateSurvey(store) {
   }
 }
 
-export default function surveyReducer(state = initialState, action) {
-  // Y a pas moyen de rendre ça générique avec freelancesReducer ?
-  return produce(state, (draft) => {
-    switch (action.type) {
-      case surveyFetching.toString(): {
-        if (draft.status === 'void') {
-          draft.status = 'pending'
-          return
-        }
-        if (draft.status === 'rejected') {
-          draft.error = null
-          draft.status = 'pending'
-          return
-        }
-        if (draft.status === 'resolved') {
-          draft.status = 'updating'
-          return
-        }
+export default createReducer(initialState, (builder) =>
+  builder
+    .addCase(surveyFetching, (draft, action) => {
+      if (draft.status === 'void') {
+        draft.status = 'pending'
         return
       }
-      case surveyResolved.toString(): {
-        if (draft.status === 'pending' || draft.status === 'updating') {
-          draft.data = action.payload
-          draft.status = 'resolved'
-          return
-        }
+      if (draft.status === 'rejected') {
+        draft.error = null
+        draft.status = 'pending'
         return
       }
-      case surveyRejected.toString(): {
-        if (draft.status === 'pending' || draft.status === 'updating') {
-          draft.error = action.payload
-          draft.data = null
-          draft.status = 'rejected'
-          return
-        }
+      if (draft.status === 'resolved') {
+        draft.status = 'updating'
         return
       }
-      default:
+      return
+    })
+    .addCase(surveyResolved, (draft, action) => {
+      if (draft.status === 'pending' || draft.status === 'updating') {
+        draft.data = action.payload
+        draft.status = 'resolved'
         return
-    }
-  })
-}
+      }
+      return
+    })
+    .addCase(surveyRejected, (draft, action) => {
+      if (draft.status === 'pending' || draft.status === 'updating') {
+        draft.error = action.payload
+        draft.data = null
+        draft.status = 'rejected'
+        return
+      }
+      return
+    })
+)
