@@ -30,7 +30,7 @@ export const toggleTheme = createAction('theme/toggle');
 
 Sachant que si j'envoie un paramètre à cette nouvelle fonction créée (par exemple, `toggleTheme('light')`), alors cette valeur en paramètre sera automatiquement envoyée dans un `payload` dans l'action.
 
-On peut aussi utiliser une fonction en 2nd paramètre de `createAction` :
+On peut aussi utiliser une fonction en 2nd paramètre de `createAction` (ce qui est utile quand on veut envoyer deux paramètre, mais tous les regrouper dans un unique `payload`, comme on a avec `freelanceResolved` dans notre projet Shiny par exemple):
 
 ```JS
 const freelanceResolved = createAction(
@@ -44,4 +44,3 @@ const freelanceResolved = createAction(
 Mais attention parce que dans ce cas, la valeur à droite de `payload` devra obligatoirement être un objet !
 
 Au lieu de passer par des constants pour identifier nos actions, on prendra la fonction, et on lui appliquera un `toString()`.
-
