@@ -46,3 +46,5 @@ Mais attention parce que dans ce cas, la valeur à droite de `payload` devra obl
 Au lieu de passer par des constants pour identifier nos actions, on prendra la fonction, et on lui appliquera un `toString()`.
 
 ## createReducer
+
+Crée un fonctionnement identique à un reducer normal, en évitant juste d'écrire certaines lignes redondantes (genre le `return state` par défaut, faire un `if` sur le `toString()` de l'actionCreator, etc).
