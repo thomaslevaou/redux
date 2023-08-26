@@ -52,3 +52,5 @@ Autant quand on simplifie un `(data) => ({ type: RESOLVED, payload: data })`, le
 Crée un fonctionnement identique à un reducer normal, en évitant juste d'écrire certaines lignes redondantes (genre le `return state` par défaut, faire un `if` sur le `toString()` de l'actionCreator, etc).
 
 Le deuxième paramètre d'un `addCase` du `createReducer` permet une mutation par variable, ce qui évite de devoir utiliser `immer`.
+
+Attention un `addCase` ne peut pas générer du `or` nativement (faire le même code pour 2+ valeurs de l'action name), donc on doit parfois faire de très légères modifications de code pour que ça colle (cf le nouveau reducer de `freelance.js`).
