@@ -42,3 +42,6 @@ const freelanceResolved = createAction(
 ```
 
 Mais attention parce que dans ce cas, la valeur à droite de `payload` devra obligatoirement être un objet !
+
+Au lieu de passer par des constants pour identifier nos actions, on prendra la fonction, et on lui appliquera un `toString()`.
+
