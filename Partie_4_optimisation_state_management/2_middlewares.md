@@ -33,3 +33,5 @@ Dans LaBO à Label Emmaüs, appeler de manière asynchrone `loadFormSchemaThunk`
 Le store en général est synchrone, c'est seulement lorsque nous on veut mettre en place des actions asynchrones (par exemple, lors d'appels API) qu'il ne l'est plus. C'est pour ça que je pense que le code de la leaving confirmation modal pourrait être amélioré.
 
 Dans Shiny, on peut en tout cas appeler le thunk avec `dispatch`, sans avoir besoin d'appeler le store via `useStore`.
+
+Pour envoyer des paramètres supplémentaires à un thunk, on doit créer une fonction qui retourne un thunk. On appelle ce genre de fonction un `thunk creator`, comme utilisé pour récupérer les données d'un seul freelance.
