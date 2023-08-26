@@ -11,18 +11,18 @@ const surveyFetching = createAction('survey/fetching')
 const surveyResolved = createAction('survey/resolved')
 const surveyRejected = createAction('survey/rejected')
 
-export async function fetchOrUpdateSurvey(store) {
-  const status = selectFreelances(store.getState()).status
+export async function fetchOrUpdateSurvey(dispatch, getState) {
+  const status = selectFreelances(getState()).status
   if (status === 'pending' || status === 'updating') {
     return
   }
-  store.dispatch(surveyFetching())
+  dispatch(surveyFetching())
   try {
     const response = await fetch('http://localhost:8000/survey')
     const data = await response.json()
-    store.dispatch(surveyResolved(data))
+    dispatch(surveyResolved(data))
   } catch (error) {
-    store.dispatch(surveyRejected(error))
+    dispatch(surveyRejected(error))
   }
 }
 
