@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Card from '../../components/Card'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
-import { useSelector, useStore } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectFreelances, selectTheme } from '../../utils/selectors'
 import { useEffect } from 'react'
 import { fetchOrUpdateFreelances } from '../../features/freelances'
@@ -44,11 +44,11 @@ function Freelances() {
 
   const freelancersList = freelances.data?.freelancersList
 
-  const store = useStore()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetchOrUpdateFreelances(store)
-  }, [store])
+    dispatch(fetchOrUpdateFreelances)
+  }, [dispatch])
 
   if (freelances.status === 'rejected') {
     return <span>Il y a un problème</span>
