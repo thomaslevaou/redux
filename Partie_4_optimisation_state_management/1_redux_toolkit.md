@@ -11,3 +11,34 @@ Dans le cadre de ce cours, on va surtout l'utiliser pour simplifier des créatio
 Permet de créer un store utilisant directement `combineReducers`, et sans avoir besoin d'une bidouille pour utiliser les Redux Dev Tools.
 
 La création du store dans `shiny-react/src/utils/store.js` s'en retrouve ainsi bien plus simplifiée.
+
+Ceci m'évite aussi le message de dépréciation à l'utilisation de `createStore` dans VS Code.
+
+## createAction
+
+Génère automatiquement un action creator, c'est-à-dire que le code là :
+
+```JS
+export const toggleTheme = () => ({ type: TOGGLE_THEME })
+```
+
+Peut être replacé par :
+
+```JS
+export const toggleTheme = createAction('theme/toggle');
+```
+
+Sachant que si j'envoie un paramètre à cette nouvelle fonction créée (par exemple, `toggleTheme('light')`), alors cette valeur en paramètre sera automatiquement envoyée dans un `payload` dans l'action.
+
+On peut aussi utiliser une fonction en 2nd paramètre de `createAction` :
+
+```JS
+const freelanceResolved = createAction(
+    'freelance/resolved',
+    (freelanceId, data) => ({
+        payload: { freelanceId, data },
+    })
+)
+```
+
+Mais attention parce que dans ce cas, la valeur à droite de `payload` devra obligatoirement être un objet !
