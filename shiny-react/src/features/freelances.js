@@ -50,7 +50,6 @@ export default function freelancesReducer(state = initialState, action) {
         return
       }
       case RESOLVED: {
-        console.log('resolved in profiles general !')
         if (draft.status === 'pending' || draft.status === 'updating') {
           draft.data = action.payload
           draft.status = 'resolved'
