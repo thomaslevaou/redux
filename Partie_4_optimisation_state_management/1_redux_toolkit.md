@@ -45,6 +45,8 @@ Mais attention parce que dans ce cas, la valeur à droite de `payload` devra obl
 
 Au lieu de passer par des constants pour identifier nos actions, on prendra la fonction, et on lui appliquera un `toString()`.
 
+Autant quand on simplifie un `(data) => ({ type: RESOLVED, payload: data })`, le createAction mettra tout de suite `data` dans `payload`, autant si data doit être dans un objet (`payload: { data }`), alors on doit le préciser en fonction du deuxième paramètre du createAction (je pense).
+
 ## createReducer
 
 Crée un fonctionnement identique à un reducer normal, en évitant juste d'écrire certaines lignes redondantes (genre le `return state` par défaut, faire un `if` sur le `toString()` de l'actionCreator, etc).
