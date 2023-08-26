@@ -35,3 +35,6 @@ Le store en général est synchrone, c'est seulement lorsque nous on veut mettre
 Dans Shiny, on peut en tout cas appeler le thunk avec `dispatch`, sans avoir besoin d'appeler le store via `useStore`.
 
 Pour envoyer des paramètres supplémentaires à un thunk, on doit créer une fonction qui retourne un thunk. On appelle ce genre de fonction un `thunk creator`, comme utilisé pour récupérer les données d'un seul freelance.
+
+En général, on utilisera les thunks quand on devra faire des appels API qui ont besoin du state redux et/ou qui le modifient à son retour.
+On pourrait s'en servir dans plein d'endroits sur LaBO, à condition de ne pas faire n'importe quoi avec.
