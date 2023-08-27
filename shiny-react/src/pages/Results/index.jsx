@@ -6,7 +6,7 @@ import colors from '../../utils/style/colors'
 import { useFetch } from '../../utils/hooks'
 import { StyledLink, Loader } from '../../utils/style/Atoms'
 import { useSelector } from 'react-redux'
-import { selectTheme } from '../../utils/selectors'
+import { selectResults, selectTheme } from '../../utils/selectors'
 
 const ResultsContainer = styled.div`
   display: flex;
@@ -77,6 +77,12 @@ function Results() {
   const theme = useSelector(selectTheme)
   const { answers } = useContext(SurveyContext)
   const queryParams = formatQueryParams(answers)
+  const results = useSelector(selectResults)
+
+  // le `data` de results est undefined ou null, resulsData vaudra `undefined` au lieu de jeter une erreur
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  // s'il ne l'est pas, alors on prendra la partie `resultsData` du retour de l'API
+  const resultsData = results.data?.resultsData
 
   const { data, isLoading, error } = useFetch(
     `http://localhost:8000/results?${queryParams}`
@@ -85,8 +91,6 @@ function Results() {
   if (error) {
     return <span>Il y a un problème</span>
   }
-
-  const resultsData = data?.resultsData
 
   if (resultsData?.length < 1) {
     return <EmptyList theme={theme} />
