@@ -19,3 +19,27 @@ Avec tout au même endroit, le code se retrouve plus facile à maintenir.
 Notons que dans `freelances`, on peut faire `(actions.resolved(data))` sans avoir précisé un `prepare` pour la gestion du data dans le payload. De la même manière qu'avec les `createActions`, l'ajout de la donnée dans le payload est ici implicite.
 
 La dernière partie de l'exo consiste à utiliser les `slices` de `Redux` au lieu de `useContext` pour gérer les réponses dans `answers`.
+
+Lors d'un createSlice, le `name` sert de préfixe à toutes les actions, cf code ci-dessous :
+
+```JS
+import { createSlice } from '@reduxjs/toolkit'
+
+const themeSlice = createSlice({
+    // le nom du slice
+    name: 'theme',
+    // le state initial
+    initialState: 'light',
+    // reducers permet de définir les actions et le reducer
+    reducers: {
+        // l'action toggle ('theme/toggle')
+        toggle: (state) => {
+            return state === 'light' ? 'dark' : 'light'
+        },
+        // l'action set ('theme/set')
+        set: (state, action) => {
+            return action.payload
+        },
+    },
+})
+```
