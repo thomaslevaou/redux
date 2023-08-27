@@ -9,3 +9,5 @@ Un exemple de test est d'appeler une action, et de vérifier qu'elle affiche bie
 On peut aussi tester les reducers, en lançant une action et en vérifiant que le nouveau state a bien pris la nouvelle action en compte.
 
 Ça fait un petit filet de sécurité sur notre redux comme ça, par exemple.
+
+Pour éviter d'avoir à ajouter le store à chaque render, on peut modifier un peut le render général (ici dans `src/utils/test/index.jsx`), pour qu'il fournisse le store de manière globale. Ce qui permet de retirer les `skip()` mis précédemment, et de faire quand même tourner correctement les tests.
