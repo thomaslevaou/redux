@@ -17,3 +17,6 @@ Le reducer du slice fait automatiquement une copie par variable du state (donc p
 Avec tout au même endroit, le code se retrouve plus facile à maintenir.
 
 Notons que dans `freelances`, on peut faire `(actions.resolved(data))` sans avoir précisé un `prepare` pour la gestion du data dans le payload. De la même manière qu'avec les `createActions`, l'ajout de la donnée dans le payload est ici implicite.
+
+J'ai pas très bien capté la dernière demande de l'exo, mais j'imagine que c'est juste le fait de passer `survey` avec `createSlice`. Sinon, je verrai plus tard.
+
