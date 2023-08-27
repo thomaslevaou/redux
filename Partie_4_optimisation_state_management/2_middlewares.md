@@ -38,3 +38,5 @@ Pour envoyer des paramètres supplémentaires à un thunk, on doit créer une fo
 
 En général, on utilisera les thunks quand on devra faire des appels API qui ont besoin du state redux et/ou qui le modifient à son retour.
 On pourrait s'en servir dans plein d'endroits sur LaBO, à condition de ne pas faire n'importe quoi avec.
+
+En soi, on pourrait s'en servir pour optimiser le nb de lignes de codes de tous les appels asynchrones à des API faits dans LaBO. À voir en fonction du bordel que ça engendrerait.
