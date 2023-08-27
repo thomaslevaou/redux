@@ -11,3 +11,7 @@ On peut aussi tester les reducers, en lançant une action et en vérifiant que l
 Ça fait un petit filet de sécurité sur notre redux comme ça, par exemple.
 
 Pour éviter d'avoir à ajouter le store à chaque render, on peut modifier un peut le render général (ici dans `src/utils/test/index.jsx`), pour qu'il fournisse le store de manière globale. Ce qui permet de retirer les `skip()` mis précédemment, et de faire quand même tourner correctement les tests.
+
+Attention à bien préciser dans ce cas qu'on utilise nos renders pour que ça marche.
+
+L'exo est vraiment hyper redondant, je pense que je peux le skip, au pire pour moi l'exo ce sera l'application dans LaBO.
