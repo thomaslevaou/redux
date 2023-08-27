@@ -3,6 +3,7 @@ import themeReducer from '../features/theme'
 import freelancesReducer from '../features/freelances'
 import surveyReducer from '../features/survey'
 import freelanceReducer from '../features/freelance'
+import resultsReducer from '../features/results'
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     freelances: freelancesReducer,
     survey: surveyReducer,
     freelance: freelanceReducer,
+    results: resultsReducer,
   },
 })

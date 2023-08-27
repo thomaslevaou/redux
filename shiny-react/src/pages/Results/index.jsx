@@ -1,12 +1,12 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import EmptyList from '../../components/EmptyList'
 import { SurveyContext } from '../../utils/context'
 import colors from '../../utils/style/colors'
-import { useFetch } from '../../utils/hooks'
 import { StyledLink, Loader } from '../../utils/style/Atoms'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectResults, selectTheme } from '../../utils/selectors'
+import { fetchOrUpdateResults } from '../../features/results'
 
 const ResultsContainer = styled.div`
   display: flex;
@@ -84,11 +84,15 @@ function Results() {
   // s'il ne l'est pas, alors on prendra la partie `resultsData` du retour de l'API
   const resultsData = results.data?.resultsData
 
-  const { data, isLoading, error } = useFetch(
-    `http://localhost:8000/results?${queryParams}`
-  )
+  const dispatch = useDispatch()
 
-  if (error) {
+  useEffect(() => {
+    dispatch(fetchOrUpdateResults(queryParams))
+  }, [dispatch, queryParams])
+
+  const isLoading = results.status === 'void ' || results.status === 'pending'
+
+  if (results.status === 'rejected') {
     return <span>Il y a un problème</span>
   }
 
