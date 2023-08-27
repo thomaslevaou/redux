@@ -14,4 +14,4 @@ Pour éviter d'avoir à ajouter le store à chaque render, on peut modifier un p
 
 Attention à bien préciser dans ce cas qu'on utilise nos renders pour que ça marche.
 
-L'exo est vraiment hyper redondant, je pense que je peux le skip, au pire pour moi l'exo ce sera l'application dans LaBO.
+L'exo est vraiment hyper redondant (on peut appliquer `toEqual` à des objets), je pense que je peux le skip, au pire pour moi l'exo ce sera l'application dans LaBO.
