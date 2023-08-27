@@ -1,11 +1,14 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import EmptyList from '../../components/EmptyList'
-import { SurveyContext } from '../../utils/context'
 import colors from '../../utils/style/colors'
 import { StyledLink, Loader } from '../../utils/style/Atoms'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectResults, selectTheme } from '../../utils/selectors'
+import {
+  selectAnswers,
+  selectResults,
+  selectTheme,
+} from '../../utils/selectors'
 import { fetchOrUpdateResults } from '../../features/results'
 
 const ResultsContainer = styled.div`
@@ -75,9 +78,9 @@ export function formatJobList(title, listLength, index) {
 
 function Results() {
   const theme = useSelector(selectTheme)
-  const { answers } = useContext(SurveyContext)
-  const queryParams = formatQueryParams(answers)
   const results = useSelector(selectResults)
+  const answers = useSelector(selectAnswers)
+  const queryParams = formatQueryParams(answers)
 
   // le `data` de results est undefined ou null, resulsData vaudra `undefined` au lieu de jeter une erreur
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining

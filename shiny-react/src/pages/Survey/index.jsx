@@ -1,13 +1,13 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
-import { SurveyContext } from '../../utils/context'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectTheme, selectSurvey } from '../../utils/selectors'
+import { selectTheme, selectSurvey, selectAnswers } from '../../utils/selectors'
 import { fetchOrUpdateSurvey } from '../../features/survey'
+import * as answersActions from '../../features/answers'
 
 const SurveyContainer = styled.div`
   display: flex;
@@ -71,10 +71,10 @@ function Survey() {
   const theme = useSelector(selectTheme)
   const survey = useSelector(selectSurvey)
   const dispatch = useDispatch()
-  const { saveAnswers, answers } = useContext(SurveyContext)
 
+  const answers = useSelector(selectAnswers)
   function saveReply(answer) {
-    saveAnswers({ [questionNumber]: answer })
+    dispatch(answersActions.save({ questionNumber, answer }))
   }
 
   useEffect(() => {
