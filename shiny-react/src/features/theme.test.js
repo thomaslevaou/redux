@@ -22,6 +22,7 @@ describe('Theme actions', () => {
 
 describe('Theme reducer', () => {
   it('should return the initial state when state is undefined', () => {
+    // Init c'est l'action qu'envoie Redux quand le state s'initialise
     expect(themeReducer(undefined, { type: '@INIT' })).toEqual('light')
   })
 
