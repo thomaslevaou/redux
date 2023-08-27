@@ -26,37 +26,37 @@ const { actions, reducer } = createSlice({
         draft.status = 'updating'
         draft.params = params
       },
-      resolved: {
-        prepare: (params, data) => ({
-          payload: { params, data },
-        }),
-        reducer: (draft, action) => {
-          if (draft.params !== action.payload.params) {
-            return
-          }
-          if (draft.status === 'pending' || draft.status === 'updating') {
-            draft.data = action.payload.data
-            draft.status = 'resolved'
-            return
-          }
+    },
+    resolved: {
+      prepare: (params, data) => ({
+        payload: { params, data },
+      }),
+      reducer: (draft, action) => {
+        if (draft.params !== action.payload.params) {
           return
-        },
+        }
+        if (draft.status === 'pending' || draft.status === 'updating') {
+          draft.data = action.payload.data
+          draft.status = 'resolved'
+          return
+        }
+        return
       },
-      rejected: {
-        prepare: (params, error) => ({
-          payload: { params, error },
-        }),
-        reducer: (draft, action) => {
-          if (draft.params !== action.payload.params) {
-            return
-          }
-          if (draft.status === 'pending' || draft.status === 'updating') {
-            draft.error = action.payload.error
-            draft.data = null
-            draft.status = 'rejected'
-            return
-          }
-        },
+    },
+    rejected: {
+      prepare: (params, error) => ({
+        payload: { params, error },
+      }),
+      reducer: (draft, action) => {
+        if (draft.params !== action.payload.params) {
+          return
+        }
+        if (draft.status === 'pending' || draft.status === 'updating') {
+          draft.error = action.payload.error
+          draft.data = null
+          draft.status = 'rejected'
+          return
+        }
       },
     },
   },
