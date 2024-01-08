@@ -1,7 +1,7 @@
 # Modifiez le fonctionnement de Redux grâce aux middlewares
 
 Un `middleware` est une fonction qui va agir avant la réalisation de chaque action Redux.
-Elle est utile quand on veut appliquer un traitement commun à toutes nos actions (un exemple au pif: afficher en console chaque nom d'action), sans avoir à l'écrire dans le reducer.
+Elle est utile quand on veut appliquer un traitement commun à toutes nos actions (un exemple au pif: afficher en console chaque nom d'action), sans avoir à l'écrire dans le reducer, à chaque fois que le store se met à jour à l'affichage d'un composant.
 
 On peut alors appeler les middlewares qu'on souhaite via le paramètre à ce nom dans `configureStore`, une fois qu'on a créé ceux dont on a besoin.
 
@@ -28,7 +28,7 @@ Le middleware thunk est installé par défaut avec Redux-Toolkit. Une fonction q
 Attention, les thunks n'apparaissent pas dans les devtools redux : seuls les actions objets apparaissent dessus.
 Dans le projet Shiny, utiliser thunk permet de simplifier un peu l'appel asynchrone à "fetch or update freelances".
 
-Dans LaBO à Label Emmaüs, appeler de manière asynchrone `loadFormSchemaThunk` n'est pas une "mauvaise idée" en soi (si cette fonction a bien besoin de dispatch en paramètre), mais elle est mal gérée par l'appel à ce même thunk lors de l'affichage du catalogue. En gros, pour que ça marche, il faudrait mettre un logo de chargement sur le formulaire, et faire en sorte qu'il se recharge lorsque ce thunk est appelé (de manière similaire au `fetchOrUpdateFreelances` ici).
+Dans LaBO à Label Emmaüs, appeler de manière asynchrone `loadFormSchemaThunk` n'est pas une "mauvaise idée" en soi (si cette fonction a bien besoin de dispatch en paramètre), mais elle est mal gérée par l'appel à ce même thunk lors de l'affichage du catalogue. En gros, pour que ça marche, il faudrait mettre un logo de chargement sur le formulaire, et faire en sorte qu'il se recharge lorsque ce thunk est appelé (de manière similaire au `fetchOrUpdateFreelances` ici). Comme ça dès que le store se met à jour, on rappelle nos données sans être verbeux.
 
 Le store en général est synchrone, c'est seulement lorsque nous on veut mettre en place des actions asynchrones (par exemple, lors d'appels API) qu'il ne l'est plus. C'est pour ça que je pense que le code de la leaving confirmation modal pourrait être amélioré.
 
